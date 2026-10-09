@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
+  Download,
   Facebook,
   Instagram,
   Menu,
@@ -12,13 +13,19 @@ import {
   X,
 } from "lucide-react";
 
+const assets = {
+  logo: "/assets/kaysleem-logo.png",
+  portrait1: "/assets/kaysleem-portrait-1.jpg",
+  portrait2: "/assets/kaysleem-portrait-2.jpg",
+  portrait3: "/assets/kaysleem-portrait-3.jpg",
+  fullBody: "/assets/kaysleem-full-body.jpg",
+  epk: "/assets/kaysleem-epk.pdf",
+};
+
 const images = {
-  hero:
-    "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=2200&q=85",
-  stage:
-    "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1800&q=85",
-  texture:
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=85",
+  hero: assets.portrait1,
+  stage: assets.fullBody,
+  texture: assets.portrait2,
 };
 
 const nav = ["About", "Sound", "Journey", "Connect"];
@@ -93,14 +100,21 @@ ${message}`;
     >
       {/* HEADER */}
       <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-[1400px] min-w-0 items-center justify-between gap-3 px-4 py-4 sm:px-6 md:px-8 md:py-5">
+        <div className="mx-auto flex w-full max-w-[1400px] min-w-0 items-center justify-between gap-3 px-4 py-3 sm:px-6 md:px-8 md:py-4">
           <button
             type="button"
             onClick={() => go("top")}
             aria-label="Kaysleem home"
-            className="shrink-0 text-lg font-extrabold tracking-[-.06em] sm:text-xl"
+            className="flex min-w-0 shrink-0 items-center gap-2"
           >
-            KAYSLEEM<span className="text-[#e8c76a]">.</span>
+            <img
+              src={assets.logo}
+              alt="Kaysleem official logo"
+              className="h-10 w-10 rounded-full object-cover sm:h-12 sm:w-12"
+            />
+            <span className="text-lg font-extrabold tracking-[-.06em] sm:text-xl">
+              KAYSLEEM<span className="text-[#e8c76a]">.</span>
+            </span>
           </button>
 
           <nav className="hidden items-center gap-6 text-[11px] font-bold uppercase tracking-[.18em] lg:flex xl:gap-8">
@@ -116,13 +130,15 @@ ${message}`;
             ))}
           </nav>
 
-          <button
-            type="button"
-            onClick={() => go("contact")}
-            className="hidden border border-[#e8c76a]/70 px-4 py-3 text-[10px] font-bold uppercase tracking-[.15em] text-[#e8c76a] transition hover:bg-[#e8c76a] hover:text-black lg:block"
+          <a
+            href={assets.epk}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 border border-[#e8c76a]/70 px-4 py-3 text-[10px] font-bold uppercase tracking-[.12em] text-[#e8c76a] transition hover:bg-[#e8c76a] hover:text-black lg:inline-flex"
           >
-            Bookings
-          </button>
+            <Download size={14} />
+            Artist EPK
+          </a>
 
           <button
             type="button"
@@ -148,10 +164,20 @@ ${message}`;
               </button>
             ))}
 
+            <a
+              href={assets.epk}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex min-h-12 items-center gap-3 text-sm font-bold text-[#e8c76a]"
+            >
+              <Download size={17} />
+              View / Download Artist EPK
+            </a>
+
             <button
               type="button"
               onClick={() => go("contact")}
-              className="mt-5 min-h-11 text-sm font-bold text-[#e8c76a]"
+              className="mt-2 min-h-11 text-sm font-bold text-[#e8c76a]"
             >
               Bookings <span aria-hidden="true">→</span>
             </button>
@@ -163,40 +189,59 @@ ${message}`;
       <section className="relative flex min-h-[min(850px,100svh)] min-h-[680px] items-end overflow-hidden px-4 pb-9 pt-28 sm:px-6 sm:pb-12 md:px-10 md:pb-16">
         <img
           src={images.hero}
-          alt="Live music performance atmosphere"
+          alt="Kaysleem in his artist portrait"
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-55"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-60"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
 
         <div className="relative mx-auto w-full min-w-0 max-w-[1400px]">
-          <p className="mb-5 max-w-full text-[10px] font-bold uppercase tracking-[.2em] text-[#e8c76a] sm:text-xs sm:tracking-[.3em]">
-            Afro Dance All · Artist · Performer
-          </p>
+          <div className="mb-5 flex items-center gap-3 sm:gap-4">
+            <img
+              src={assets.logo}
+              alt="Official Kaysleem logo"
+              className="h-14 w-14 shrink-0 rounded-full border border-[#e8c76a]/40 object-cover sm:h-16 sm:w-16 md:h-20 md:w-20"
+            />
+            <p className="max-w-full text-[10px] font-bold uppercase tracking-[.2em] text-[#e8c76a] sm:text-xs sm:tracking-[.3em]">
+              Afro Dance All · Artist · Performer
+            </p>
+          </div>
 
           <h1 className="max-w-full break-words text-[clamp(3rem,15.5vw,13rem)] font-extrabold leading-[0.9] tracking-[-.075em] sm:text-[clamp(4.5rem,13vw,13rem)]">
             KAYSLEEM
           </h1>
 
           <div className="mt-7 flex min-w-0 flex-col gap-6 border-t border-white/20 pt-5 sm:mt-8 sm:pt-6 md:flex-row md:items-end md:justify-between md:gap-8">
-            <p className="w-full max-w-xl break-words text-sm leading-7 text-white/70 sm:text-base">
+            <p className="w-full max-w-xl break-words text-sm leading-7 text-white/80 sm:text-base">
               Born from the rhythm of Abia State and raised in Jos, Kaysleem
               brings a distinctive Afro Dance All sound shaped by movement,
               experience and a lifelong love for music.
             </p>
 
-            <button
-              type="button"
-              onClick={() => go("about")}
-              className="flex min-h-11 w-fit max-w-full items-center gap-3 text-left text-xs font-bold uppercase tracking-[.16em] sm:tracking-[.2em]"
-            >
-              Explore the artist
-              <ArrowDownRight
-                size={17}
-                className="shrink-0 text-[#e8c76a]"
-              />
-            </button>
+            <div className="flex flex-wrap items-center gap-5">
+              <button
+                type="button"
+                onClick={() => go("about")}
+                className="flex min-h-11 w-fit max-w-full items-center gap-3 text-left text-xs font-bold uppercase tracking-[.16em] sm:tracking-[.2em]"
+              >
+                Explore the artist
+                <ArrowDownRight
+                  size={17}
+                  className="shrink-0 text-[#e8c76a]"
+                />
+              </button>
+
+              <a
+                href={assets.epk}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 border border-[#e8c76a]/70 px-4 py-3 text-[10px] font-bold uppercase tracking-[.12em] text-[#e8c76a] transition hover:bg-[#e8c76a] hover:text-black"
+              >
+                <Download size={15} />
+                Artist EPK
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -375,6 +420,69 @@ ${message}`;
         </div>
       </section>
 
+      {/* ARTIST GALLERY */}
+      <section
+        id="gallery"
+        className="mx-auto w-full min-w-0 max-w-[1400px] px-4 py-20 sm:px-6 sm:py-24 md:px-10 md:py-28"
+      >
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#e8c76a] sm:tracking-[.3em]">
+              Artist portraits / 03
+            </p>
+            <h2 className="display mt-4 break-words text-5xl sm:text-6xl md:text-8xl">
+              The visual <em>story.</em>
+            </h2>
+          </div>
+
+          <a
+            href={assets.epk}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center gap-2 border border-[#e8c76a]/70 px-4 py-3 text-[10px] font-bold uppercase tracking-[.12em] text-[#e8c76a] transition hover:bg-[#e8c76a] hover:text-black"
+          >
+            <Download size={15} />
+            Download EPK
+          </a>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3">
+          <img
+            src={assets.portrait1}
+            alt="Kaysleem in a black jacket and cap"
+            loading="lazy"
+            className="h-64 w-full object-cover object-center sm:h-[28rem]"
+          />
+          <img
+            src={assets.portrait2}
+            alt="Kaysleem in a warm studio portrait"
+            loading="lazy"
+            className="h-64 w-full object-cover object-center sm:h-[28rem]"
+          />
+          <img
+            src={assets.portrait3}
+            alt="Kaysleem wearing a patterned black jacket"
+            loading="lazy"
+            className="col-span-2 h-72 w-full object-cover object-center sm:col-span-1 sm:h-[28rem]"
+          />
+        </div>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+          <p className="text-xs leading-6 text-white/45">
+            Official artist imagery for press, bookings and music promotion.
+          </p>
+          <a
+            href={assets.epk}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 w-fit items-center gap-3 bg-[#e8c76a] px-5 py-3 text-[10px] font-bold uppercase tracking-[.12em] text-black transition hover:bg-white"
+          >
+            View / Download Artist EPK
+            <ArrowUpRight size={16} />
+          </a>
+        </div>
+      </section>
+
       {/* JOURNEY */}
       <section
         id="journey"
@@ -383,7 +491,7 @@ ${message}`;
         <div className="grid min-w-0 gap-9 md:grid-cols-[.8fr_1.2fr] md:gap-12">
           <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#e8c76a] sm:tracking-[.3em]">
-              03 / The Journey
+              04 / The Journey
             </p>
 
             <h2 className="display mt-5 break-words text-5xl leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl">
@@ -441,9 +549,9 @@ ${message}`;
       <section className="relative min-h-[520px] min-h-[70svh] w-full min-w-0 overflow-hidden">
         <img
           src={images.stage}
-          alt="Live concert atmosphere"
+          alt="Kaysleem in his full-body artist photo"
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
         <div className="absolute inset-0 bg-black/65" />
@@ -477,7 +585,7 @@ ${message}`;
         <div className="grid min-w-0 gap-9 md:grid-cols-2 md:gap-12">
           <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#e8c76a] sm:tracking-[.3em]">
-              04 / Connect
+              05 / Connect
             </p>
 
             <h2 className="display mt-5 break-words text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
@@ -559,7 +667,7 @@ ${message}`;
         <div className="mx-auto grid w-full min-w-0 max-w-[1400px] gap-10 md:grid-cols-[1fr_.75fr] md:gap-14">
           <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-[.25em] opacity-60 sm:tracking-[.3em]">
-              05 / Bookings & Contact
+              06 / Bookings & Contact
             </p>
 
             <h2 className="display mt-5 max-w-full break-words text-5xl leading-[.95] sm:text-6xl md:text-7xl lg:text-[8rem]">
