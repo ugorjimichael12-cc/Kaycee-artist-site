@@ -597,7 +597,7 @@ ${message}`;
 
           <div className="grid min-w-0 grid-cols-2 border-l border-white/10">
             <a
-              href="https://www.instagram.com/kaysleem_samuel"
+              href="https://www.instagram.com/kaysleem_music"
               target="_blank"
               rel="noopener noreferrer"
               className="group min-w-0 border-b border-r border-white/10 p-4 transition hover:bg-white/[.04] sm:p-6"
